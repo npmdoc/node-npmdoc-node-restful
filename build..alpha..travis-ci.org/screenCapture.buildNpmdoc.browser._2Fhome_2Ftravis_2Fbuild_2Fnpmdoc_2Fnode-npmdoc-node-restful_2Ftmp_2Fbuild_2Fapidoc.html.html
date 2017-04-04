@@ -1,0 +1,649 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/baugarten/node-restful#readme">node-restful (v0.2.6)</a>
+</h1>
+<h4>A library for making REST API's in node.js with express</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-restful">module node-restful</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.authFailure">
+            function <span class="apidocSignatureSpan">node-restful.</span>authFailure
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.badRequest">
+            function <span class="apidocSignatureSpan">node-restful.</span>badRequest
+            <span class="apidocSignatureSpan">(errobj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.delete">
+            function <span class="apidocSignatureSpan">node-restful.</span>delete
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.get">
+            function <span class="apidocSignatureSpan">node-restful.</span>get
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.getDetail">
+            function <span class="apidocSignatureSpan">node-restful.</span>getDetail
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.getPath">
+            function <span class="apidocSignatureSpan">node-restful.</span>getPath
+            <span class="apidocSignatureSpan">(pathName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.last">
+            function <span class="apidocSignatureSpan">node-restful.</span>last
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.model">
+            function <span class="apidocSignatureSpan">node-restful.</span>model
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.objectNotFound">
+            function <span class="apidocSignatureSpan">node-restful.</span>objectNotFound
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.post">
+            function <span class="apidocSignatureSpan">node-restful.</span>post
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.put">
+            function <span class="apidocSignatureSpan">node-restful.</span>put
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.respond">
+            function <span class="apidocSignatureSpan">node-restful.</span>respond
+            <span class="apidocSignatureSpan">(res, statusCode, content)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.respond404">
+            function <span class="apidocSignatureSpan">node-restful.</span>respond404
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.respondOrErr">
+            function <span class="apidocSignatureSpan">node-restful.</span>respondOrErr
+            <span class="apidocSignatureSpan">(res, errStatusCode, err, statusCode, content)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-restful.schema">
+            function <span class="apidocSignatureSpan">node-restful.</span>schema
+            <span class="apidocSignatureSpan">(req, res, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-restful.</span>mongoose</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-restful" id="apidoc.module.node-restful">module node-restful</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.authFailure" id="apidoc.element.node-restful.authFailure">
+        function <span class="apidocSignatureSpan">node-restful.</span>authFailure
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authFailure = function () {
+  return {
+    status: 401,
+    message: 'Unauthorized',
+    name: "Unauthorized",
+    errors: 'Operation not authorzed on ' + this.modelName
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.badRequest" id="apidoc.element.node-restful.badRequest">
+        function <span class="apidocSignatureSpan">node-restful.</span>badRequest
+        <span class="apidocSignatureSpan">(errobj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">badRequest = function (errobj) {
+  return {
+    status: 400,
+    message: 'Bad Request',
+    name: "BadRequest",
+    errors: errobj || "Your request was invalid"
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.delete" id="apidoc.element.node-restful.delete">
+        function <span class="apidocSignatureSpan">node-restful.</span>delete
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">delete = function (req, res, next) {
+  // Delete in 1 atomic operation on the database if not specified otherwise
+  if (this.shouldUseAtomicUpdate) {
+    req.quer.findOneAndRemove({}, this.delete_options, function(err, obj) {
+      if (err) {
+        exports.respond(res, 500, err);
+      }
+      exports.respondOrErr(res, 404, !obj &amp;&amp; exports.objectNotFound(), 204, {});
+      next();
+    });
+  } else {
+    // Preform the remove in two steps allowing mongoose to fire its schema update hook
+    req.quer.findOne({"_id": req.params.id}, function(err, docToRemove) {
+      if (err) {
+        exports.respond(res, 500, err);
+      }
+      var objNotFound = !docToRemove &amp;&amp; exports.objectNotFound();
+      if (objNotFound) {
+        exports.respond(res, 404, objNotFound);
+        return next();
+      }
+
+      docToRemove.remove(function (err, obj) {
+        exports.respondOrErr(res, 400, err, 204, {});
+        next();
+      });
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.get" id="apidoc.element.node-restful.get">
+        function <span class="apidocSignatureSpan">node-restful.</span>get
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (req, res, next) {
+  if (req.params.id &amp;&amp; !mongoose.Types.ObjectId.isValid(req.params.id)) {
+    exports.respond(res, 404, exports.objectNotFound());
+    next();
+  } else {
+    req.quer.exec(function(err, list) {
+      if (err) {
+        exports.respond(res, 500, err);
+      } else if (req.params.id) {
+        exports.respondOrErr(res, 404, !list &amp;&amp; exports.objectNotFound(), 200, (list &amp;&amp; _.isArray(list)) ? list[0] : list);
+      } else {
+        exports.respondOrErr(res, 500, err, 200, list);
+      }
+      next();
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.getDetail" id="apidoc.element.node-restful.getDetail">
+        function <span class="apidocSignatureSpan">node-restful.</span>getDetail
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getDetail = function (req, res, next) {
+  req.quer.exec(function(err, one) {
+    exports.respondOrErr(res, 500, err, 200, one);
+    next();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.getPath" id="apidoc.element.node-restful.getPath">
+        function <span class="apidocSignatureSpan">node-restful.</span>getPath
+        <span class="apidocSignatureSpan">(pathName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getPath = function (pathName) {
+  return function(req, res, next) {
+    req.quer = req.quer.populate(pathName);
+    req.quer.exec(function(err, one) {
+      var errStatus = ((err &amp;&amp; err.status) ? err.status : 500);
+      exports.respondOrErr(res, errStatus, err, 200, (one &amp;&amp; one.get(pathName)) || {});
+      next();
+    });
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.last" id="apidoc.element.node-restful.last">
+        function <span class="apidocSignatureSpan">node-restful.</span>last
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">last = function (req, res, next) {
+  if (res.locals.bundle) {
+    if (req.body.format === 'js') {
+      return res.send(res.locals.bundle);
+    } else if (req.body.format === 'html' || req.query.format === 'html') {
+      return res.render(this.templateRoot + '/' + req.templatePath, res.locals.bundle);
+    } else {
+      return res.status(res.locals.status_code).json(res.locals.bundle);
+    }
+  }
+  res.send();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var handler = this.routes;
+req.quer = this.filter(req.filters, req.body, req.query, this.Model.find({}));
+req.templatePath = this.template(routes, req.filters);
+routes.forEach(function(route) {
+  if (route in handler) handler = handler[route];
+  else if (!('all' in handler)) {
+    handlers.respond(res, 404, handlers.respond404());
+    handlers.<span class="apidocCodeKeywordSpan">last</span>(req, res);
+  }
+});
+if ('all' in handler) handler = handler.all;
+
+if ('function' === typeof handler) {
+  return handler.call(this, req, res, next);
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.model" id="apidoc.element.node-restful.model">
+        function <span class="apidocSignatureSpan">node-restful.</span>model
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function model() {
+  var result = mongoose.model.apply(mongoose, arguments),
+      default_properties = defaults();
+  if (1 === arguments.length) return result;
+
+  for (var key in default_properties) {
+   result[key] = default_properties[key];
+  }
+
+  return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+app.use(bodyParser.urlencoded({'extended':'true'}));
+app.use(bodyParser.json());
+app.use(bodyParser.json({type:'application/vnd.api+json'}));
+app.use(methodOverride());
+
+mongoose.connect("mongodb://localhost/resources");
+
+var Resource = app.resource = restful.<span class="apidocCodeKeywordSpan">model</span>('resource', mongoose.Schema({
+    title: String,
+    year: Number,
+  }))
+  .methods(['get', 'post', 'put', 'delete']);
+
+Resource.register(app, '/resources');
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.objectNotFound" id="apidoc.element.node-restful.objectNotFound">
+        function <span class="apidocSignatureSpan">node-restful.</span>objectNotFound
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">objectNotFound = function () {
+  return {
+    status: 404,
+    message: 'Object not found',
+    name: 'ObjectNotFound',
+    errors: {
+      _id: {
+        message: "Could not find object with specified attributes"
+      }
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.post" id="apidoc.element.node-restful.post">
+        function <span class="apidocSignatureSpan">node-restful.</span>post
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">post = function (req, res, next) {
+  var obj = new this(req.body);
+  obj.save(function(err) {
+    exports.respondOrErr(res, 400, err, 201, obj);
+    next();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.put" id="apidoc.element.node-restful.put">
+        function <span class="apidocSignatureSpan">node-restful.</span>put
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">put = function (req, res, next) {
+  // Remove immutable ObjectId from update attributes to prevent request failure
+  if (req.body._id &amp;&amp; req.body._id === req.params.id) {
+    delete req.body._id;
+  }
+
+  // Update in 1 atomic operation on the database if not specified otherwise
+  if (this.shouldUseAtomicUpdate) {
+    req.quer.findOneAndUpdate({}, req.body, this.update_options, function(err, newObj) {
+      if (err) {
+        exports.respond(res, 500, err);
+      } else if (!newObj) {
+        exports.respond(res, 404, exports.objectNotFound());
+      } else {
+        exports.respond(res, 200, newObj);
+      }
+      next();
+    });
+  } else {
+    // Preform the update in two operations allowing mongoose to fire its schema update hook
+    req.quer.findOne({"_id": req.params.id}, function(err, docToUpdate) {
+      if (err) {
+        exports.respond(res, 500, err);
+      }
+      var objNotFound = !docToUpdate &amp;&amp; exports.objectNotFound();
+      if (objNotFound) {
+        exports.respond(res, 404, objNotFound);
+        return next();
+      }
+
+      docToUpdate.set(req.body);
+      docToUpdate.save(function (err, obj) {
+        exports.respondOrErr(res, 400, err, 200, obj);
+        next();
+      });
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.respond" id="apidoc.element.node-restful.respond">
+        function <span class="apidocSignatureSpan">node-restful.</span>respond
+        <span class="apidocSignatureSpan">(res, statusCode, content)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">respond = function (res, statusCode, content) {
+  res.locals.status_code = statusCode;
+  res.locals.bundle = content;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Model.prototype.send = function(routes, req, res, next) {
+var handler = this.routes;
+req.quer = this.filter(req.filters, req.body, req.query, this.Model.find({}));
+req.templatePath = this.template(routes, req.filters);
+routes.forEach(function(route) {
+  if (route in handler) handler = handler[route];
+  else if (!('all' in handler)) {
+    handlers.<span class="apidocCodeKeywordSpan">respond</span>(res, 404, handlers.respond404());
+    handlers.last(req, res);
+  }
+});
+if ('all' in handler) handler = handler.all;
+
+if ('function' === typeof handler) {
+  return handler.call(this, req, res, next);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.respond404" id="apidoc.element.node-restful.respond404">
+        function <span class="apidocSignatureSpan">node-restful.</span>respond404
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">respond404 = function () {
+  return {
+    status: 404,
+    message: 'Page Not Found',
+    name: "PageNotFound",
+    errors: 'Endpoint not found for model ' + this.modelName
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Model.prototype.send = function(routes, req, res, next) {
+var handler = this.routes;
+req.quer = this.filter(req.filters, req.body, req.query, this.Model.find({}));
+req.templatePath = this.template(routes, req.filters);
+routes.forEach(function(route) {
+  if (route in handler) handler = handler[route];
+  else if (!('all' in handler)) {
+    handlers.respond(res, 404, handlers.<span class="apidocCodeKeywordSpan">respond404</span>());
+    handlers.last(req, res);
+  }
+});
+if ('all' in handler) handler = handler.all;
+
+if ('function' === typeof handler) {
+  return handler.call(this, req, res, next);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.respondOrErr" id="apidoc.element.node-restful.respondOrErr">
+        function <span class="apidocSignatureSpan">node-restful.</span>respondOrErr
+        <span class="apidocSignatureSpan">(res, errStatusCode, err, statusCode, content)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">respondOrErr = function (res, errStatusCode, err, statusCode, content) {
+  if (err) {
+    exports.respond(res, errStatusCode, err);
+  } else {
+    exports.respond(res, statusCode, content);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-restful.schema" id="apidoc.element.node-restful.schema">
+        function <span class="apidocSignatureSpan">node-restful.</span>schema
+        <span class="apidocSignatureSpan">(req, res, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">schema = function (req, res, next) {
+  // We can mount a model to multiple apps, so we need to get the base url from the request url
+  var baseuri = req.url.split('/');
+  baseuri = baseuri.slice(0, baseuri.length - 1).join('/');
+  var detailuri = baseuri + '/:id';
+  exports.respond(res, 200, {
+    resource: this.modelName,
+    allowed_methods: Object.keys(this.allowed_methods),
+    list_uri: baseuri,
+    detail_uri: detailuri,
+    fields: keep(this.schema.paths, ['regExp', 'path', 'instance', 'isRequired'])
+  });
+  next();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
