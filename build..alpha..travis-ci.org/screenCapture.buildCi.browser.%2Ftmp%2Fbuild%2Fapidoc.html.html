@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/baugarten/node-restful#readme"
-
-    >node-restful (v0.2.6)</a>
+    <a href="https://github.com/baugarten/node-restful#readme">node-restful (v0.2.6)</a>
 </h1>
 <h4>A library for making REST API's in node.js with express</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.node-restful">module node-restful</a><ol>
 
@@ -371,9 +364,9 @@
     <li>description and source-code<pre class="apidocCodePre">authFailure = function () {
   return {
     status: 401,
-    message: &#x27;Unauthorized&#x27;,
-    name: &#x22;Unauthorized&#x22;,
-    errors: &#x27;Operation not authorzed on &#x27; + this.modelName
+    message: 'Unauthorized',
+    name: "Unauthorized",
+    errors: 'Operation not authorzed on ' + this.modelName
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -391,9 +384,9 @@
     <li>description and source-code<pre class="apidocCodePre">badRequest = function (errobj) {
   return {
     status: 400,
-    message: &#x27;Bad Request&#x27;,
-    name: &#x22;BadRequest&#x22;,
-    errors: errobj || &#x22;Your request was invalid&#x22;
+    message: 'Bad Request',
+    name: "BadRequest",
+    errors: errobj || "Your request was invalid"
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -415,16 +408,16 @@
       if (err) {
         exports.respond(res, 500, err);
       }
-      exports.respondOrErr(res, 404, !obj &#x26;&#x26; exports.objectNotFound(), 204, {});
+      exports.respondOrErr(res, 404, !obj &amp;&amp; exports.objectNotFound(), 204, {});
       next();
     });
   } else {
     // Preform the remove in two steps allowing mongoose to fire its schema update hook
-    req.quer.findOne({&#x22;_id&#x22;: req.params.id}, function(err, docToRemove) {
+    req.quer.findOne({"_id": req.params.id}, function(err, docToRemove) {
       if (err) {
         exports.respond(res, 500, err);
       }
-      var objNotFound = !docToRemove &#x26;&#x26; exports.objectNotFound();
+      var objNotFound = !docToRemove &amp;&amp; exports.objectNotFound();
       if (objNotFound) {
         exports.respond(res, 404, objNotFound);
         return next();
@@ -450,7 +443,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">get = function (req, res, next) {
-  if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) {
+  if (req.params.id &amp;&amp; !mongoose.Types.ObjectId.isValid(req.params.id)) {
     exports.respond(res, 404, exports.objectNotFound());
     next();
   } else {
@@ -458,7 +451,7 @@
       if (err) {
         exports.respond(res, 500, err);
       } else if (req.params.id) {
-        exports.respondOrErr(res, 404, !list &#x26;&#x26; exports.objectNotFound(), 200, (list &#x26;&#x26; _.isArray(list)) ? list[0] : list);
+        exports.respondOrErr(res, 404, !list &amp;&amp; exports.objectNotFound(), 200, (list &amp;&amp; _.isArray(list)) ? list[0] : list);
       } else {
         exports.respondOrErr(res, 500, err, 200, list);
       }
@@ -473,8 +466,8 @@ exports.getPath = function(pathName) {
 return function(req, res, next) {
   req.quer = req.quer.populate(pathName);
   req.quer.exec(function(err, one) {
-    var errStatus = ((err &#x26;&#x26; err.status) ? err.status : 500);
-    exports.respondOrErr(res, errStatus, err, 200, (one &#x26;&#x26; one.<span class="apidocCodeKeywordSpan">get</span>(pathName
+    var errStatus = ((err &amp;&amp; err.status) ? err.status : 500);
+    exports.respondOrErr(res, errStatus, err, 200, (one &amp;&amp; one.<span class="apidocCodeKeywordSpan">get</span>(pathName
 )) || {});
     next();
   });
@@ -517,8 +510,8 @@ var obj = new this(req.body);
   return function(req, res, next) {
     req.quer = req.quer.populate(pathName);
     req.quer.exec(function(err, one) {
-      var errStatus = ((err &#x26;&#x26; err.status) ? err.status : 500);
-      exports.respondOrErr(res, errStatus, err, 200, (one &#x26;&#x26; one.get(pathName)) || {});
+      var errStatus = ((err &amp;&amp; err.status) ? err.status : 500);
+      exports.respondOrErr(res, errStatus, err, 200, (one &amp;&amp; one.get(pathName)) || {});
       next();
     });
   };
@@ -537,10 +530,10 @@ var obj = new this(req.body);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">last = function (req, res, next) {
   if (res.locals.bundle) {
-    if (req.body.format === &#x27;js&#x27;) {
+    if (req.body.format === 'js') {
       return res.send(res.locals.bundle);
-    } else if (req.body.format === &#x27;html&#x27; || req.query.format === &#x27;html&#x27;) {
-      return res.render(this.templateRoot + &#x27;/&#x27; + req.templatePath, res.locals.bundle);
+    } else if (req.body.format === 'html' || req.query.format === 'html') {
+      return res.render(this.templateRoot + '/' + req.templatePath, res.locals.bundle);
     } else {
       return res.status(res.locals.status_code).json(res.locals.bundle);
     }
@@ -553,14 +546,14 @@ req.quer = this.filter(req.filters, req.body, req.query, this.Model.find({}));
 req.templatePath = this.template(routes, req.filters);
 routes.forEach(function(route) {
   if (route in handler) handler = handler[route];
-  else if (!(&#x27;all&#x27; in handler)) {
+  else if (!('all' in handler)) {
     handlers.respond(res, 404, handlers.respond404());
     handlers.<span class="apidocCodeKeywordSpan">last</span>(req, res);
   }
 });
-if (&#x27;all&#x27; in handler) handler = handler.all;
+if ('all' in handler) handler = handler.all;
 
-if (&#x27;function&#x27; === typeof handler) {
+if ('function' === typeof handler) {
   return handler.call(this, req, res, next);
 }
 ...</pre></li>
@@ -587,20 +580,20 @@ if (&#x27;function&#x27; === typeof handler) {
   return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-app.use(bodyParser.urlencoded({&#x27;extended&#x27;:&#x27;true&#x27;}));
+app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
-app.use(bodyParser.json({type:&#x27;application/vnd.api+json&#x27;}));
+app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use(methodOverride());
 
-mongoose.connect(&#x22;mongodb://localhost/resources&#x22;);
+mongoose.connect("mongodb://localhost/resources");
 
-var Resource = app.resource = restful.<span class="apidocCodeKeywordSpan">model</span>(&#x27;resource&#x27;, mongoose.Schema({
+var Resource = app.resource = restful.<span class="apidocCodeKeywordSpan">model</span>('resource', mongoose.Schema({
     title: String,
     year: Number,
   }))
-  .methods([&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]);
+  .methods(['get', 'post', 'put', 'delete']);
 
-Resource.register(app, &#x27;/resources&#x27;);
+Resource.register(app, '/resources');
 ...</pre></li>
     </ul>
 
@@ -616,23 +609,23 @@ Resource.register(app, &#x27;/resources&#x27;);
     <li>description and source-code<pre class="apidocCodePre">objectNotFound = function () {
   return {
     status: 404,
-    message: &#x27;Object not found&#x27;,
-    name: &#x27;ObjectNotFound&#x27;,
+    message: 'Object not found',
+    name: 'ObjectNotFound',
     errors: {
       _id: {
-        message: &#x22;Could not find object with specified attributes&#x22;
+        message: "Could not find object with specified attributes"
       }
     }
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  fields: keep(this.schema.paths, [&#x27;regExp&#x27;, &#x27;path&#x27;, &#x27;instance&#x27;, &#x27;isRequired&#x27;])
+  fields: keep(this.schema.paths, ['regExp', 'path', 'instance', 'isRequired'])
 });
 next();
 };
 
 exports.get = function(req, res, next) {
-if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) {
+if (req.params.id &amp;&amp; !mongoose.Types.ObjectId.isValid(req.params.id)) {
   exports.respond(res, 404, exports.<span class="apidocCodeKeywordSpan">objectNotFound</span>());
   next();
 } else {
@@ -640,7 +633,7 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
     if (err) {
       exports.respond(res, 500, err);
     } else if (req.params.id) {
-      exports.respondOrErr(res, 404, !list &#x26;&#x26; exports.objectNotFound(), 200, (list &#x26;&#x26; _.isArray(list)) ? list
+      exports.respondOrErr(res, 404, !list &amp;&amp; exports.objectNotFound(), 200, (list &amp;&amp; _.isArray(list)) ? list
 [0] : list);
 ...</pre></li>
     </ul>
@@ -675,7 +668,7 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
     <ul>
     <li>description and source-code<pre class="apidocCodePre">put = function (req, res, next) {
   // Remove immutable ObjectId from update attributes to prevent request failure
-  if (req.body._id &#x26;&#x26; req.body._id === req.params.id) {
+  if (req.body._id &amp;&amp; req.body._id === req.params.id) {
     delete req.body._id;
   }
 
@@ -693,11 +686,11 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
     });
   } else {
     // Preform the update in two operations allowing mongoose to fire its schema update hook
-    req.quer.findOne({&#x22;_id&#x22;: req.params.id}, function(err, docToUpdate) {
+    req.quer.findOne({"_id": req.params.id}, function(err, docToUpdate) {
       if (err) {
         exports.respond(res, 500, err);
       }
-      var objNotFound = !docToUpdate &#x26;&#x26; exports.objectNotFound();
+      var objNotFound = !docToUpdate &amp;&amp; exports.objectNotFound();
       if (objNotFound) {
         exports.respond(res, 404, objNotFound);
         return next();
@@ -732,15 +725,15 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
 
 exports.schema = function(req, res, next) {
 // We can mount a model to multiple apps, so we need to get the base url from the request url
-var baseuri = req.url.split(&#x27;/&#x27;);
-baseuri = baseuri.slice(0, baseuri.length - 1).join(&#x27;/&#x27;);
-var detailuri = baseuri + &#x27;/:id&#x27;;
+var baseuri = req.url.split('/');
+baseuri = baseuri.slice(0, baseuri.length - 1).join('/');
+var detailuri = baseuri + '/:id';
 exports.<span class="apidocCodeKeywordSpan">respond</span>(res, 200, {
   resource: this.modelName,
   allowed_methods: Object.keys(this.allowed_methods),
   list_uri: baseuri,
   detail_uri: detailuri,
-  fields: keep(this.schema.paths, [&#x27;regExp&#x27;, &#x27;path&#x27;, &#x27;instance&#x27;, &#x27;isRequired&#x27;])
+  fields: keep(this.schema.paths, ['regExp', 'path', 'instance', 'isRequired'])
 });
 next();
 ...</pre></li>
@@ -758,9 +751,9 @@ next();
     <li>description and source-code<pre class="apidocCodePre">respond404 = function () {
   return {
     status: 404,
-    message: &#x27;Page Not Found&#x27;,
-    name: &#x22;PageNotFound&#x22;,
-    errors: &#x27;Endpoint not found for model &#x27; + this.modelName
+    message: 'Page Not Found',
+    name: "PageNotFound",
+    errors: 'Endpoint not found for model ' + this.modelName
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -770,14 +763,14 @@ req.quer = this.filter(req.filters, req.body, req.query, this.Model.find({}));
 req.templatePath = this.template(routes, req.filters);
 routes.forEach(function(route) {
   if (route in handler) handler = handler[route];
-  else if (!(&#x27;all&#x27; in handler)) {
+  else if (!('all' in handler)) {
     handlers.respond(res, 404, handlers.<span class="apidocCodeKeywordSpan">respond404</span>());
     handlers.last(req, res);
   }
 });
-if (&#x27;all&#x27; in handler) handler = handler.all;
+if ('all' in handler) handler = handler.all;
 
-if (&#x27;function&#x27; === typeof handler) {
+if ('function' === typeof handler) {
   return handler.call(this, req, res, next);
 ...</pre></li>
     </ul>
@@ -806,8 +799,8 @@ if (&#x27;function&#x27; === typeof handler) {
       if (err) {
         exports.respond(res, 500, err);
       } else if (req.params.id) {
-        exports.<span class="apidocCodeKeywordSpan">respondOrErr</span>(res, 404, !list &#x26;&#x26; exports.objectNotFound(), 200
-, (list &#x26;&#x26; _.isArray(list)) ? list[0] : list);
+        exports.<span class="apidocCodeKeywordSpan">respondOrErr</span>(res, 404, !list &amp;&amp; exports.objectNotFound(), 200
+, (list &amp;&amp; _.isArray(list)) ? list[0] : list);
       } else {
         exports.respondOrErr(res, 500, err, 200, list);
       }
@@ -829,15 +822,15 @@ if (&#x27;function&#x27; === typeof handler) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">schema = function (req, res, next) {
   // We can mount a model to multiple apps, so we need to get the base url from the request url
-  var baseuri = req.url.split(&#x27;/&#x27;);
-  baseuri = baseuri.slice(0, baseuri.length - 1).join(&#x27;/&#x27;);
-  var detailuri = baseuri + &#x27;/:id&#x27;;
+  var baseuri = req.url.split('/');
+  baseuri = baseuri.slice(0, baseuri.length - 1).join('/');
+  var detailuri = baseuri + '/:id';
   exports.respond(res, 200, {
     resource: this.modelName,
     allowed_methods: Object.keys(this.allowed_methods),
     list_uri: baseuri,
     detail_uri: detailuri,
-    fields: keep(this.schema.paths, [&#x27;regExp&#x27;, &#x27;path&#x27;, &#x27;instance&#x27;, &#x27;isRequired&#x27;])
+    fields: keep(this.schema.paths, ['regExp', 'path', 'instance', 'isRequired'])
   });
   next();
 }</pre></li>
@@ -865,9 +858,9 @@ if (&#x27;function&#x27; === typeof handler) {
     <li>description and source-code<pre class="apidocCodePre">authFailure = function () {
   return {
     status: 401,
-    message: &#x27;Unauthorized&#x27;,
-    name: &#x22;Unauthorized&#x22;,
-    errors: &#x27;Operation not authorzed on &#x27; + this.modelName
+    message: 'Unauthorized',
+    name: "Unauthorized",
+    errors: 'Operation not authorzed on ' + this.modelName
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -885,9 +878,9 @@ if (&#x27;function&#x27; === typeof handler) {
     <li>description and source-code<pre class="apidocCodePre">badRequest = function (errobj) {
   return {
     status: 400,
-    message: &#x27;Bad Request&#x27;,
-    name: &#x22;BadRequest&#x22;,
-    errors: errobj || &#x22;Your request was invalid&#x22;
+    message: 'Bad Request',
+    name: "BadRequest",
+    errors: errobj || "Your request was invalid"
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -909,16 +902,16 @@ if (&#x27;function&#x27; === typeof handler) {
       if (err) {
         exports.respond(res, 500, err);
       }
-      exports.respondOrErr(res, 404, !obj &#x26;&#x26; exports.objectNotFound(), 204, {});
+      exports.respondOrErr(res, 404, !obj &amp;&amp; exports.objectNotFound(), 204, {});
       next();
     });
   } else {
     // Preform the remove in two steps allowing mongoose to fire its schema update hook
-    req.quer.findOne({&#x22;_id&#x22;: req.params.id}, function(err, docToRemove) {
+    req.quer.findOne({"_id": req.params.id}, function(err, docToRemove) {
       if (err) {
         exports.respond(res, 500, err);
       }
-      var objNotFound = !docToRemove &#x26;&#x26; exports.objectNotFound();
+      var objNotFound = !docToRemove &amp;&amp; exports.objectNotFound();
       if (objNotFound) {
         exports.respond(res, 404, objNotFound);
         return next();
@@ -944,7 +937,7 @@ if (&#x27;function&#x27; === typeof handler) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">get = function (req, res, next) {
-  if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) {
+  if (req.params.id &amp;&amp; !mongoose.Types.ObjectId.isValid(req.params.id)) {
     exports.respond(res, 404, exports.objectNotFound());
     next();
   } else {
@@ -952,7 +945,7 @@ if (&#x27;function&#x27; === typeof handler) {
       if (err) {
         exports.respond(res, 500, err);
       } else if (req.params.id) {
-        exports.respondOrErr(res, 404, !list &#x26;&#x26; exports.objectNotFound(), 200, (list &#x26;&#x26; _.isArray(list)) ? list[0] : list);
+        exports.respondOrErr(res, 404, !list &amp;&amp; exports.objectNotFound(), 200, (list &amp;&amp; _.isArray(list)) ? list[0] : list);
       } else {
         exports.respondOrErr(res, 500, err, 200, list);
       }
@@ -967,8 +960,8 @@ exports.getPath = function(pathName) {
 return function(req, res, next) {
   req.quer = req.quer.populate(pathName);
   req.quer.exec(function(err, one) {
-    var errStatus = ((err &#x26;&#x26; err.status) ? err.status : 500);
-    exports.respondOrErr(res, errStatus, err, 200, (one &#x26;&#x26; one.<span class="apidocCodeKeywordSpan">get</span>(pathName
+    var errStatus = ((err &amp;&amp; err.status) ? err.status : 500);
+    exports.respondOrErr(res, errStatus, err, 200, (one &amp;&amp; one.<span class="apidocCodeKeywordSpan">get</span>(pathName
 )) || {});
     next();
   });
@@ -1011,8 +1004,8 @@ var obj = new this(req.body);
   return function(req, res, next) {
     req.quer = req.quer.populate(pathName);
     req.quer.exec(function(err, one) {
-      var errStatus = ((err &#x26;&#x26; err.status) ? err.status : 500);
-      exports.respondOrErr(res, errStatus, err, 200, (one &#x26;&#x26; one.get(pathName)) || {});
+      var errStatus = ((err &amp;&amp; err.status) ? err.status : 500);
+      exports.respondOrErr(res, errStatus, err, 200, (one &amp;&amp; one.get(pathName)) || {});
       next();
     });
   };
@@ -1031,10 +1024,10 @@ var obj = new this(req.body);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">last = function (req, res, next) {
   if (res.locals.bundle) {
-    if (req.body.format === &#x27;js&#x27;) {
+    if (req.body.format === 'js') {
       return res.send(res.locals.bundle);
-    } else if (req.body.format === &#x27;html&#x27; || req.query.format === &#x27;html&#x27;) {
-      return res.render(this.templateRoot + &#x27;/&#x27; + req.templatePath, res.locals.bundle);
+    } else if (req.body.format === 'html' || req.query.format === 'html') {
+      return res.render(this.templateRoot + '/' + req.templatePath, res.locals.bundle);
     } else {
       return res.status(res.locals.status_code).json(res.locals.bundle);
     }
@@ -1047,14 +1040,14 @@ req.quer = this.filter(req.filters, req.body, req.query, this.Model.find({}));
 req.templatePath = this.template(routes, req.filters);
 routes.forEach(function(route) {
   if (route in handler) handler = handler[route];
-  else if (!(&#x27;all&#x27; in handler)) {
+  else if (!('all' in handler)) {
     handlers.respond(res, 404, handlers.respond404());
     handlers.<span class="apidocCodeKeywordSpan">last</span>(req, res);
   }
 });
-if (&#x27;all&#x27; in handler) handler = handler.all;
+if ('all' in handler) handler = handler.all;
 
-if (&#x27;function&#x27; === typeof handler) {
+if ('function' === typeof handler) {
   return handler.call(this, req, res, next);
 }
 ...</pre></li>
@@ -1081,20 +1074,20 @@ if (&#x27;function&#x27; === typeof handler) {
   return result;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-app.use(bodyParser.urlencoded({&#x27;extended&#x27;:&#x27;true&#x27;}));
+app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
-app.use(bodyParser.json({type:&#x27;application/vnd.api+json&#x27;}));
+app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use(methodOverride());
 
-mongoose.connect(&#x22;mongodb://localhost/resources&#x22;);
+mongoose.connect("mongodb://localhost/resources");
 
-var Resource = app.resource = restful.<span class="apidocCodeKeywordSpan">model</span>(&#x27;resource&#x27;, mongoose.Schema({
+var Resource = app.resource = restful.<span class="apidocCodeKeywordSpan">model</span>('resource', mongoose.Schema({
     title: String,
     year: Number,
   }))
-  .methods([&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]);
+  .methods(['get', 'post', 'put', 'delete']);
 
-Resource.register(app, &#x27;/resources&#x27;);
+Resource.register(app, '/resources');
 ...</pre></li>
     </ul>
 
@@ -1110,23 +1103,23 @@ Resource.register(app, &#x27;/resources&#x27;);
     <li>description and source-code<pre class="apidocCodePre">objectNotFound = function () {
   return {
     status: 404,
-    message: &#x27;Object not found&#x27;,
-    name: &#x27;ObjectNotFound&#x27;,
+    message: 'Object not found',
+    name: 'ObjectNotFound',
     errors: {
       _id: {
-        message: &#x22;Could not find object with specified attributes&#x22;
+        message: "Could not find object with specified attributes"
       }
     }
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  fields: keep(this.schema.paths, [&#x27;regExp&#x27;, &#x27;path&#x27;, &#x27;instance&#x27;, &#x27;isRequired&#x27;])
+  fields: keep(this.schema.paths, ['regExp', 'path', 'instance', 'isRequired'])
 });
 next();
 };
 
 exports.get = function(req, res, next) {
-if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) {
+if (req.params.id &amp;&amp; !mongoose.Types.ObjectId.isValid(req.params.id)) {
   exports.respond(res, 404, exports.<span class="apidocCodeKeywordSpan">objectNotFound</span>());
   next();
 } else {
@@ -1134,7 +1127,7 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
     if (err) {
       exports.respond(res, 500, err);
     } else if (req.params.id) {
-      exports.respondOrErr(res, 404, !list &#x26;&#x26; exports.objectNotFound(), 200, (list &#x26;&#x26; _.isArray(list)) ? list
+      exports.respondOrErr(res, 404, !list &amp;&amp; exports.objectNotFound(), 200, (list &amp;&amp; _.isArray(list)) ? list
 [0] : list);
 ...</pre></li>
     </ul>
@@ -1169,7 +1162,7 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
     <ul>
     <li>description and source-code<pre class="apidocCodePre">put = function (req, res, next) {
   // Remove immutable ObjectId from update attributes to prevent request failure
-  if (req.body._id &#x26;&#x26; req.body._id === req.params.id) {
+  if (req.body._id &amp;&amp; req.body._id === req.params.id) {
     delete req.body._id;
   }
 
@@ -1187,11 +1180,11 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
     });
   } else {
     // Preform the update in two operations allowing mongoose to fire its schema update hook
-    req.quer.findOne({&#x22;_id&#x22;: req.params.id}, function(err, docToUpdate) {
+    req.quer.findOne({"_id": req.params.id}, function(err, docToUpdate) {
       if (err) {
         exports.respond(res, 500, err);
       }
-      var objNotFound = !docToUpdate &#x26;&#x26; exports.objectNotFound();
+      var objNotFound = !docToUpdate &amp;&amp; exports.objectNotFound();
       if (objNotFound) {
         exports.respond(res, 404, objNotFound);
         return next();
@@ -1226,15 +1219,15 @@ if (req.params.id &#x26;&#x26; !mongoose.Types.ObjectId.isValid(req.params.id)) 
 
 exports.schema = function(req, res, next) {
 // We can mount a model to multiple apps, so we need to get the base url from the request url
-var baseuri = req.url.split(&#x27;/&#x27;);
-baseuri = baseuri.slice(0, baseuri.length - 1).join(&#x27;/&#x27;);
-var detailuri = baseuri + &#x27;/:id&#x27;;
+var baseuri = req.url.split('/');
+baseuri = baseuri.slice(0, baseuri.length - 1).join('/');
+var detailuri = baseuri + '/:id';
 exports.<span class="apidocCodeKeywordSpan">respond</span>(res, 200, {
   resource: this.modelName,
   allowed_methods: Object.keys(this.allowed_methods),
   list_uri: baseuri,
   detail_uri: detailuri,
-  fields: keep(this.schema.paths, [&#x27;regExp&#x27;, &#x27;path&#x27;, &#x27;instance&#x27;, &#x27;isRequired&#x27;])
+  fields: keep(this.schema.paths, ['regExp', 'path', 'instance', 'isRequired'])
 });
 next();
 ...</pre></li>
@@ -1252,9 +1245,9 @@ next();
     <li>description and source-code<pre class="apidocCodePre">respond404 = function () {
   return {
     status: 404,
-    message: &#x27;Page Not Found&#x27;,
-    name: &#x22;PageNotFound&#x22;,
-    errors: &#x27;Endpoint not found for model &#x27; + this.modelName
+    message: 'Page Not Found',
+    name: "PageNotFound",
+    errors: 'Endpoint not found for model ' + this.modelName
   };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -1264,14 +1257,14 @@ req.quer = this.filter(req.filters, req.body, req.query, this.Model.find({}));
 req.templatePath = this.template(routes, req.filters);
 routes.forEach(function(route) {
   if (route in handler) handler = handler[route];
-  else if (!(&#x27;all&#x27; in handler)) {
+  else if (!('all' in handler)) {
     handlers.respond(res, 404, handlers.<span class="apidocCodeKeywordSpan">respond404</span>());
     handlers.last(req, res);
   }
 });
-if (&#x27;all&#x27; in handler) handler = handler.all;
+if ('all' in handler) handler = handler.all;
 
-if (&#x27;function&#x27; === typeof handler) {
+if ('function' === typeof handler) {
   return handler.call(this, req, res, next);
 ...</pre></li>
     </ul>
@@ -1300,8 +1293,8 @@ if (&#x27;function&#x27; === typeof handler) {
       if (err) {
         exports.respond(res, 500, err);
       } else if (req.params.id) {
-        exports.<span class="apidocCodeKeywordSpan">respondOrErr</span>(res, 404, !list &#x26;&#x26; exports.objectNotFound(), 200
-, (list &#x26;&#x26; _.isArray(list)) ? list[0] : list);
+        exports.<span class="apidocCodeKeywordSpan">respondOrErr</span>(res, 404, !list &amp;&amp; exports.objectNotFound(), 200
+, (list &amp;&amp; _.isArray(list)) ? list[0] : list);
       } else {
         exports.respondOrErr(res, 500, err, 200, list);
       }
@@ -1323,15 +1316,15 @@ if (&#x27;function&#x27; === typeof handler) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">schema = function (req, res, next) {
   // We can mount a model to multiple apps, so we need to get the base url from the request url
-  var baseuri = req.url.split(&#x27;/&#x27;);
-  baseuri = baseuri.slice(0, baseuri.length - 1).join(&#x27;/&#x27;);
-  var detailuri = baseuri + &#x27;/:id&#x27;;
+  var baseuri = req.url.split('/');
+  baseuri = baseuri.slice(0, baseuri.length - 1).join('/');
+  var detailuri = baseuri + '/:id';
   exports.respond(res, 200, {
     resource: this.modelName,
     allowed_methods: Object.keys(this.allowed_methods),
     list_uri: baseuri,
     detail_uri: detailuri,
-    fields: keep(this.schema.paths, [&#x27;regExp&#x27;, &#x27;path&#x27;, &#x27;instance&#x27;, &#x27;isRequired&#x27;])
+    fields: keep(this.schema.paths, ['regExp', 'path', 'instance', 'isRequired'])
   });
   next();
 }</pre></li>
@@ -1349,3 +1342,4 @@ if (&#x27;function&#x27; === typeof handler) {
     ]
 </div>
 </div>
+</body></html>
