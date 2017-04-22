@@ -74,7 +74,8 @@
     "scripts": {
         "test": "make test"
     },
-    "version": "0.2.6"
+    "version": "0.2.6",
+    "bin": {}
 }
 ```
 
